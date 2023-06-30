@@ -10,10 +10,9 @@ import ibd.transaction.instruction.MultiReadInstruction;
 import ibd.transaction.Transaction;
 import ibd.transaction.concurrency.Item;
 import ibd.transaction.concurrency.locktable.items.DeivisItemCollection;
-// import ibd.transaction.concurrency.locktable.items.HashItem;
+import ibd.transaction.concurrency.locktable.items.DeivisListaItemCollection;
+import ibd.transaction.concurrency.locktable.items.HashItem;
 import ibd.transaction.concurrency.locktable.items.ItemCollection;
-
-import java.util.TreeMap;
 
 /**
  *
@@ -23,6 +22,7 @@ public class LockTable {
 
     // ItemCollection items = new HashItem();
     ItemCollection items = new DeivisItemCollection();
+    // ItemCollection items = new DeivisListaItemCollection();
 
     /*
      * Adds an item related to the records accessed by the instruction.

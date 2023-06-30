@@ -116,7 +116,8 @@ public class Main {
     public static void main(String[] args) {
         Main m = new Main();
         try {
-            // m.test1(new LockBasedConcurrencyManager(), "E","D");
+            // m.test1(new LockBasedConcurrencyManager(), "A", "E", "D");
+            // m.test2(new LockBasedConcurrencyManager(), "C", "Z", "L");
             m.test2(new LockBasedConcurrencyManager(), "A", "E", "D");
             // m.test2(new LockBasedConcurrencyManager(), "A","C", "B","C","C");
 

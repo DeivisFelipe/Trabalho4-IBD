@@ -15,20 +15,19 @@ import java.util.HashMap;
  */
 public class HashItem implements ItemCollection {
 
-    
     private HashMap<Long, Item> items = new HashMap<>();
-    
+
     @Override
     public Item addItem(long lower, long higher) {
-        
+
         Item item = getItem(lower, higher);
-        if (item==null){
+        if (item == null) {
             item = new Item(lower, higher);
             items.put(lower, item);
         }
-        
+
         return item;
-        
+
     }
 
     @Override
@@ -45,11 +44,8 @@ public class HashItem implements ItemCollection {
     public Iterable<Item> getOverlappedItems(long lower, long higher) {
         ArrayList list = new ArrayList();
         Item item = items.get(lower);
-        if (item!=null) list.add(item);
+        if (item != null)
+            list.add(item);
         return list;
     }
-    
-    
-    
-    
 }
