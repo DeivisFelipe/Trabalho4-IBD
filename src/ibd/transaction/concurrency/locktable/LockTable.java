@@ -9,8 +9,11 @@ import ibd.transaction.instruction.Instruction;
 import ibd.transaction.instruction.MultiReadInstruction;
 import ibd.transaction.Transaction;
 import ibd.transaction.concurrency.Item;
-import ibd.transaction.concurrency.locktable.items.HashItem;
+import ibd.transaction.concurrency.locktable.items.DeivisItemCollection;
+// import ibd.transaction.concurrency.locktable.items.HashItem;
 import ibd.transaction.concurrency.locktable.items.ItemCollection;
+
+import java.util.TreeMap;
 
 /**
  *
@@ -18,12 +21,13 @@ import ibd.transaction.concurrency.locktable.items.ItemCollection;
  */
 public class LockTable {
 
-    ItemCollection items = new HashItem();
+    // ItemCollection items = new HashItem();
+    ItemCollection items = new DeivisItemCollection();
 
     /*
-    * Adds an item related to the records accessed by the instruction. 
-    * the recors are identified by their primary keys
-    * If an item already exists, just returns it. 
+     * Adds an item related to the records accessed by the instruction.
+     * the recors are identified by their primary keys
+     * If an item already exists, just returns it.
      */
     public Item addItem(Instruction i) {
         Long firstPK = i.getPk();
@@ -46,7 +50,7 @@ public class LockTable {
     }
 
     /*
-    * returns all items affected by the records acessed by the instruction. 
+     * returns all items affected by the records acessed by the instruction.
      */
     public Iterable<Item> getItems(Instruction i) {
         Long firstPK = i.getPk();
@@ -62,7 +66,8 @@ public class LockTable {
     }
 
     /*
-    * removes all references to a transaction (its instructions) from the items of the lock table 
+     * removes all references to a transaction (its instructions) from the items of
+     * the lock table
      */
     public void removeTransaction(Transaction t) {
         for (Item item : items.getAllItems()) {
